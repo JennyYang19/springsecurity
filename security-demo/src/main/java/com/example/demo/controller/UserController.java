@@ -2,6 +2,7 @@ package com.example.demo.controller;
 
 import com.example.demo.dto.User;
 import com.example.demo.dto.UserQueryCondition;
+import com.example.demo.exception.UserNotExistExceptioin;
 import com.fasterxml.jackson.annotation.JsonView;
 import org.apache.commons.lang.builder.ReflectionToStringBuilder;
 import org.apache.commons.lang.builder.ToStringStyle;
@@ -88,11 +89,15 @@ public class UserController {
     @JsonView(User.UserDetailView.class)
     public User getUserInfo(@PathVariable String id){
 
-        System.out.println(id);
-        User user = new User();
-        user.setUsername("Tom");
-        user.setAge(18);
-        return user;
+        throw new UserNotExistExceptioin(id);
+
+
+//
+//        System.out.println("进入 getInfo服务");
+//        User user = new User();
+//        user.setUsername("Tom");
+//        user.setAge(18);
+//        return user;
     }
 
 
