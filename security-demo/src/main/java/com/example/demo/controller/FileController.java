@@ -51,7 +51,7 @@ public class FileController {
                 OutputStream outputStream=response.getOutputStream();){
               response.setContentType("application/x-download");
               response.addHeader("Content-Disposition","attachment;filename=test.txt");
-
+              //妈呀
               IOUtils.copy(inputStream, outputStream);
               outputStream.flush();
           }
