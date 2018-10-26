@@ -4,6 +4,8 @@ import com.example.demo.dto.User;
 import com.example.demo.dto.UserQueryCondition;
 import com.example.demo.exception.UserNotExistExceptioin;
 import com.fasterxml.jackson.annotation.JsonView;
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiParam;
 import org.apache.commons.lang.builder.ReflectionToStringBuilder;
 import org.apache.commons.lang.builder.ToStringStyle;
 import org.junit.Test;
@@ -86,8 +88,9 @@ public class UserController {
      */
 //    @RequestMapping(value = "/user/{id:\\d+}", method = RequestMethod.GET)
     @GetMapping("/{id:\\d+}")
+    @ApiOperation(value="根据id查用户")
     @JsonView(User.UserDetailView.class)
-    public User getUserInfo(@PathVariable String id){
+    public User getUserInfo(@PathVariable @ApiParam("用户id") String id){
 
         throw new UserNotExistExceptioin(id);
 

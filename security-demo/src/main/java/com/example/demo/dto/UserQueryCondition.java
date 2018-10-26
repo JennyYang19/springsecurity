@@ -1,9 +1,13 @@
 package com.example.demo.dto;
 
+import io.swagger.annotations.ApiModelProperty;
+
 /**
  * Created by Administrator on 2018/10/3.
  */
 public class UserQueryCondition {
+
+    @ApiModelProperty(value = "用户名")
     private String username;
     private String passworld;
     private int age;

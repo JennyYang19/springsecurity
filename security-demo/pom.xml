@@ -45,6 +45,12 @@
 			<artifactId>commons-lang</artifactId>
 		</dependency>
 
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <optional>true</optional>
+        </dependency>
+
 		<dependency>
 			<groupId>io.springfox</groupId>
 			<artifactId>springfox-swagger2</artifactId>
@@ -59,6 +65,8 @@
 			<groupId>com.github.tomakehurst</groupId>
 			<artifactId>wiremock</artifactId>
 		</dependency>
+
+
 	</dependencies>
 
 	<!--打包的插件-->

@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.web.servlet.config.annotation.AsyncSupportConfigurer;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
@@ -17,12 +18,19 @@ import java.util.List;
 /**
  * 引入外部的没有带@conpoment的filter可以这样做
  */
-@Configuration
+//@Configuration
 public class WebConfig extends WebMvcConfigurerAdapter {
 
     @Autowired
     private TimeInterceptor timeInterceptor;
 
+    /**
+     * 异步配置
+   @Override
+    public void configureAsyncSupport(AsyncSupportConfigurer configurer) {
+        configurer.registerCallableInterceptors()
+    }
+*/
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
         registry.addInterceptor(timeInterceptor);
