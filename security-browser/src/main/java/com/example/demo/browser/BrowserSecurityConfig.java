@@ -1,5 +1,7 @@
 package com.example.demo.browser;
 
+import com.example.demo.browser.authentication.ImoocAuthenticationFailureHandler;
+import com.example.demo.browser.authentication.ImoocAuthenticationSuccessHandler;
 import com.example.securitycore.propertites.SecurityProperties;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -16,6 +18,12 @@ import javax.annotation.Resource;
 public class BrowserSecurityConfig extends WebSecurityConfigurerAdapter {
 
 
+
+    @Autowired
+    private ImoocAuthenticationSuccessHandler imoocAuthenticationSuccessHandler;
+
+    @Autowired
+    private ImoocAuthenticationFailureHandler imoocAuthenticationFailureHandler;
     /**
      * 密码加密
      * @return
@@ -28,12 +36,16 @@ public class BrowserSecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     private SecurityProperties securityProperties;
 
+
+
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.formLogin()
 //                .loginPage("/imooc-signIn.html")
                 .loginPage("/authentication/require")
                 .loginProcessingUrl("/authentication/form")
+                .successHandler(imoocAuthenticationSuccessHandler)
+                .failureHandler(imoocAuthenticationFailureHandler)
 //        http.httpBasic()
                 .and()
                 .authorizeRequests()
