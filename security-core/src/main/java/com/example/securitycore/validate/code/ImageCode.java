@@ -22,6 +22,10 @@ public class ImageCode {
         this.expireTime=expireTime;
     }
 
+
+    public boolean isExpired(){  //当前时间是否在过期时间之后
+        return LocalDateTime.now().isAfter(expireTime);
+    }
     /**
      * 在多少秒过期
      * @param image

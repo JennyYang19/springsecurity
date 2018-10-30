@@ -1,17 +1,14 @@
 package com.example.securitycore.propertites;
 
+import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
 @ConfigurationProperties(prefix = "imooc.security")
+@Data
 public class SecurityProperties {
 
     private BrowserProperties browser = new BrowserProperties();
 
-    public BrowserProperties getBrowser() {
-        return browser;
-    }
+    private ValidateCodeProperties code=new ValidateCodeProperties();
 
-    public void setBrowser(BrowserProperties browser) {
-        this.browser = browser;
-    }
 }
