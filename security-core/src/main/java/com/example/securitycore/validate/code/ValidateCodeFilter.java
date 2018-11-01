@@ -1,13 +1,13 @@
 package com.example.securitycore.validate.code;
 
 import com.example.securitycore.propertites.SecurityProperties;
+import com.example.securitycore.validate.code.image.ImageCode;
 import lombok.Data;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.security.web.authentication.AuthenticationFailureHandler;
 import org.springframework.social.connect.web.HttpSessionSessionStrategy;
 import org.springframework.social.connect.web.SessionStrategy;
-import org.springframework.stereotype.Component;
 import org.springframework.util.AntPathMatcher;
 import org.springframework.web.bind.ServletRequestBindingException;
 import org.springframework.web.bind.ServletRequestUtils;
@@ -40,9 +40,12 @@ public class ValidateCodeFilter  extends OncePerRequestFilter implements Initial
     public void afterPropertiesSet() throws ServletException {
         super.afterPropertiesSet();
         String[] configUrls=StringUtils.splitByWholeSeparatorPreserveAllTokens(securityProperties.getCode().getImage().getUrl(),",");
-        for (String url : configUrls) {
-            urls.add(url);
+        if (configUrls!=null) {
+            for (String url : configUrls) {
+                urls.add(url);
+            }
         }
+
         urls.add("/authentication/form");
     }
 

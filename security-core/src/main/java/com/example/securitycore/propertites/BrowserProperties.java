@@ -9,6 +9,7 @@ public class BrowserProperties {
     private String loginPage = "/imooc-signIn.html"; //设置默认登录页
 //    private String loginPage ; //设置默认登录页
 
+    private int rememberMeSeconds=600;
 
     private LoginType loginType = LoginType.JSON;
 

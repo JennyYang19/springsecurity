@@ -1,26 +1,26 @@
 package com.example.securitycore.validate.code;
 
-import jdk.nashorn.internal.objects.annotations.Constructor;
 import lombok.Data;
 
 import java.awt.image.BufferedImage;
 import java.time.LocalDateTime;
 
 @Data
-public class ImageCode {
+public class ValidateCode {
 
 
-    private BufferedImage image;
+
 
     private String code;
 
     private LocalDateTime expireTime;
 
-    public ImageCode(BufferedImage image, String code, LocalDateTime expireTime) {
-        this.image=image;
+    public ValidateCode(String code, LocalDateTime expireTime) {
+
         this.code=code;
         this.expireTime=expireTime;
     }
+
 
 
     public boolean isExpired(){  //当前时间是否在过期时间之后
@@ -28,12 +28,11 @@ public class ImageCode {
     }
     /**
      * 在多少秒过期
-     * @param image
      * @param code
      * @param expireIn
      */
-    public ImageCode(BufferedImage image, String code, int expireIn) {
-        this.image=image;
+    public ValidateCode(String code, int expireIn) {
+
         this.code=code;
         this.expireTime=LocalDateTime.now().plusSeconds(expireIn);
     }

@@ -1,8 +1,10 @@
-package com.example.securitycore.validate.code;
+package com.example.securitycore.validate.code.image;
 
 import com.example.securitycore.propertites.SecurityProperties;
+import com.example.securitycore.validate.code.ValidateCodeGenerate;
 import lombok.Data;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import org.springframework.web.bind.ServletRequestUtils;
 import org.springframework.web.context.request.ServletWebRequest;
 
@@ -11,7 +13,8 @@ import java.awt.image.BufferedImage;
 import java.util.Random;
 
 @Data
-public class ImageCodeGenerate implements ValidateCodeGenerate  {
+@Component("imageCodeGenerator")
+public class ImageCodeGenerate implements ValidateCodeGenerate {
 
 
     @Autowired

@@ -4,5 +4,5 @@ import org.springframework.web.context.request.ServletWebRequest;
 
 public interface ValidateCodeGenerate {
 
-    ImageCode generate(ServletWebRequest request);
+    ValidateCode generate(ServletWebRequest request);
 }
