@@ -1,11 +1,10 @@
 package com.example.demo.code;
 
-import com.example.securitycore.validate.code.ImageCode;
+import com.example.securitycore.validate.code.image.ImageCode;
 import com.example.securitycore.validate.code.ValidateCodeGenerate;
-import org.springframework.stereotype.Component;
 import org.springframework.web.context.request.ServletWebRequest;
 
-@Component("imageCodeGenerate")   //覆盖默认的逻辑 以增量的方式去适应变化
+//@Component("imageCodeGenerate")   //覆盖默认的逻辑 以增量的方式去适应变化
 public class DemoImageCodeGenerate implements ValidateCodeGenerate {
     @Override
     public ImageCode generate(ServletWebRequest request) {
